@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor User as nv
+boundary Fragment as fragment
+control ViewModel as viewModel
+database Firebase as db
+nv -> fragment: Bam vao thanh tim kiem
+fragment -> viewModel: Nhap keyword
+viewModel -> db: Gui request len Firebase
+db --> viewModel: Tra ve response
+alt Tim thay
+    viewModel --> fragment: Keyword trung khop
+    fragment --> nv: Hien thi ket qua
+else khong tim thay
+    viewModel --> fragment: Keyword khong trung khop
+    fragment --> nv: Hien thi thong bao khong tim thay
+end
+
+
+@enduml

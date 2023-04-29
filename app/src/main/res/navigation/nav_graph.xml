@@ -4,15 +4,343 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
+
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.bakery.ui.Home.HomeFragment"
+        android:name="com.example.bakery.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/openCustomerManagement"
+            app:destination="@id/customerManagementFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/openStorageManagement"
+            app:destination="@id/branchManagementFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/openUserManagementFragment"
+            app:destination="@id/userManagementFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/goToMenu"
+            app:destination="@id/foodFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.bakery.ui.Profile.ProfileFragment"
+        android:name="com.example.bakery.ui.profile.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/backToSplash"
+            app:destination="@id/startActivity"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="uid"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/goToEditProfile"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/customerManagementFragment"
+        android:name="com.example.bakery.ui.customer.customer_management.CustomerManagementFragment"
+        android:label="CustomerManagementFragment"
+        tools:layout="@layout/fragment_customer_management">
+        <action
+            android:id="@+id/addCustomer"
+            app:destination="@id/addCustomerFragment" />
+        <action
+            android:id="@+id/openCustomerProfile"
+            app:destination="@id/customerProfileFragment">
+            <argument
+                android:name="uid"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/branchManagementFragment"
+        android:name="com.example.bakery.ui.branch.branch_management.BranchManagementFragment"
+        android:label="StorageManagementFragment"
+        tools:layout="@layout/fragment_storage_management">
+        <action
+            android:id="@+id/goToBranchInfo"
+            app:destination="@id/branchInfoFragment">
+            <argument
+                android:name="id"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+        <action
+            android:id="@+id/goToCreateBranch"
+            app:destination="@id/createBranchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userManagementFragment"
+        android:name="com.example.bakery.ui.user.user_management.UserManagementFragment"
+        android:label="UserManagementFragment"
+        tools:layout="@layout/fragment_user_management">
+        <action
+            android:id="@+id/openSignUp"
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+        <argument
+            android:name="uid"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/openUserProfile"
+            app:destination="@id/userProfileFragment">
+            <argument
+                android:name="uid"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.bakery.ui.signup.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_signup" />
+    <activity
+        android:id="@+id/startActivity"
+        android:name="com.example.bakery.ui.start.StartActivity"
+        android:label="StartActivity"
+        tools:layout="@layout/activity_start" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.bakery.ui.user.user_profile.UserProfileFragment"
+        android:label="UserProfileFragment"
+        tools:layout="@layout/fragment_user_profile">
+        <argument
+            android:name="uid"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/openEditUser"
+            app:destination="@id/editUserFragment">
+            <argument
+                android:name="uid"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/addCustomerFragment"
+        android:name="com.example.bakery.ui.customer.add_customer.AddCustomerFragment"
+        android:label="AddCustomerFragment"
+        tools:layout="@layout/fragment_add_customer" />
+    <fragment
+        android:id="@+id/customerProfileFragment"
+        android:name="com.example.bakery.ui.customer.customer_profile.CustomerProfileFragment"
+        android:label="CustomerProfileFragment"
+        tools:layout="@layout/fragment_customer_profile">
+        <argument
+            android:name="uid"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/goToEditCustomer"
+            app:destination="@id/editCustomerFragment">
+            <argument
+                android:name="uid"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+        <action
+            android:id="@+id/goToCreateBill"
+            app:destination="@id/createBillFragment">
+            <argument
+                android:name="uid"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+        <action
+            android:id="@+id/goToBillDetail"
+            app:destination="@id/billDetailFragment">
+            <argument
+                android:name="position"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+
+            <argument
+                android:name="uid"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.bakery.ui.edit_profile.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/editCustomerFragment"
+        android:name="com.example.bakery.ui.customer.edit_customer.EditCustomerFragment"
+        android:label="EditCustomerFragment"
+        tools:layout="@layout/fragment_edit_customer">
+        <argument
+            android:name="uid"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/createBillFragment"
+        android:name="com.example.bakery.ui.bill.create_bill.CreateBillFragment"
+        android:label="CreateBillFragment"
+        tools:layout="@layout/fragment_create_bill">
+        <argument
+            android:name="uid"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/editUserFragment"
+        android:name="com.example.bakery.ui.user.edit_user.EditUserFragment"
+        android:label="EditUserFragment"
+        tools:layout="@layout/fragment_edit_user">
+        <argument
+            android:name="uid"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/billDetailFragment"
+        android:name="com.example.bakery.ui.bill.bill_detail.BillDetailFragment"
+        android:label="BillDetailFragment"
+        tools:layout="@layout/fragment_bill_detail">
+        <argument
+            android:name="position"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="uid"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodFragment"
+        android:name="com.example.bakery.ui.food.food_management.FoodFragment"
+        android:label="FoodFragment"
+        tools:layout="@layout/fragment_food">
+        <action
+            android:id="@+id/goToCreateFood"
+            app:destination="@id/createFoodFragment" />
+        <action
+            android:id="@+id/goToEditFood"
+            app:destination="@id/foodEditFragment">
+            <argument
+                android:name="id"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/createFoodFragment"
+        android:name="com.example.bakery.ui.food.create_food.CreateFoodFragment"
+        android:label="CreateFoodFragment"
+        tools:layout="@layout/fragment_create_food" />
+
+    <fragment
+        android:id="@+id/foodEditFragment"
+        android:name="com.example.bakery.ui.food.food_edit.FoodEditFragment"
+        android:label="FoodEditFragment"
+        tools:layout="@layout/fragment_food_edit">
+        <argument
+            android:name="id"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/branchInfoFragment"
+        android:name="com.example.bakery.ui.branch.branch_info.BranchInfoFragment"
+        android:label="BranchInfoFragment"
+        tools:layout="@layout/fragment_branch_info">
+        <argument
+            android:name="id"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/goToUserProfile"
+            app:destination="@id/userProfileFragment">
+            <argument
+                android:name="uid"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+        <action
+            android:id="@+id/goToEditBranch"
+            app:destination="@id/editBranchFragment">
+            <argument
+                android:name="id"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/createBranchFragment"
+        android:name="com.example.bakery.ui.branch.create_branch.CreateBranchFragment"
+        android:label="CreateBranchFragment"
+        tools:layout="@layout/fragment_create_branch" />
+    <fragment
+        android:id="@+id/editBranchFragment"
+        android:name="com.example.bakery.ui.branch.edit_branch.EditBranchFragment"
+        android:label="EditBranchFragment"
+        tools:layout="@layout/fragment_edit_branch">
+        <argument
+            android:name="id"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 
 </navigation>

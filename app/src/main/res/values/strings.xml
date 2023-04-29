@@ -3,4 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_history">History</string>
     <string name="title_profile">Profile</string>
+    <string name="role_employee">Nhân viên</string>
+    <string name="role_admin">Quản trị viên</string>
 </resources>

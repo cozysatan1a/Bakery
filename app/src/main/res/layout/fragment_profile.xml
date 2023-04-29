@@ -1,14 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="listener"
+            type="com.example.bakery.ui.profile.ProfileListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black">
+        android:background="@color/zircon">
+        <LinearLayout
+            android:id="@+id/ll_label"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingTop="@dimen/_5sdp">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:onClick="@{v-> listener.onBackPressed()}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hồ sơ"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toBottomOf="@id/ll_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/_20sdp"
+
+            >
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="@dimen/_12sdp">
+                <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintTop_toBottomOf="@id/ll_label"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:src="@drawable/img_avatar_male"
+                    android:scaleType="fitXY"
+                    />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ll_avatar"
+            app:layout_constraintStart_toStartOf="@id/ll_avatar"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_24ssp"
+            android:layout_marginStart="@dimen/_20sdp"
+            tools:text="Username"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            tools:text="Nhân viên"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_role"
+            app:layout_constraintStart_toStartOf="@id/tv_role"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="Giới tính:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/gender"
+            app:layout_constraintBottom_toBottomOf="@id/gender"
+            app:layout_constraintStart_toEndOf="@id/gender"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginStart="@dimen/_4sdp"
+            tools:text="Nam"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tv_dob"
+            app:layout_constraintBottom_toBottomOf="@id/tv_dob"
+            app:layout_constraintEnd_toStartOf="@id/tv_dob"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:text="Ngày sinh:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/gender"
+            app:layout_constraintBottom_toBottomOf="@id/gender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginStart="@dimen/_4sdp"
+            tools:text="15/09/2000"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/gender"
+            app:layout_constraintStart_toStartOf="@id/gender"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Email:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/email"
+            app:layout_constraintBottom_toBottomOf="@id/email"
+            app:layout_constraintStart_toEndOf="@id/email"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginStart="@dimen/_4sdp"
+            tools:text="tuanhiepri12@gmail.com"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/tv_email"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingHorizontal="@dimen/_20sdp">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_stroke_black"
+                android:text="Thay đổi thông tin "
+                android:textColor="@color/black"
+                android:onClick="@{v-> listener.onClickEditInfo()}"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/ll_edit"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingHorizontal="@dimen/_20sdp">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_stroke_black"
+                android:text="Đăng xuất"
+                android:textColor="@color/black"
+                android:onClick="@{v-> listener.onClickLogOut()}"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
