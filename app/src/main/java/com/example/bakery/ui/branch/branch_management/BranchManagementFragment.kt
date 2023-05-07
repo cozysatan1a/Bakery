@@ -39,7 +39,9 @@ class BranchManagementFragment :
                         androidx.appcompat.widget.SearchView.OnQueryTextListener {
                         override fun onQueryTextSubmit(query: String?): Boolean {
                             val list = it.filter {
-                                query?.let { query -> it.address?.lowercase()?.contains(query) } == true
+                                query?.let { query ->
+                                    it.address?.lowercase()?.contains(query)
+                                } == true
                             }
                             binding.rvBranchList.adapter =
                                 BranchAdapter(

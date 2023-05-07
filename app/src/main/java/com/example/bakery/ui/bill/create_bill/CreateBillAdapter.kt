@@ -55,7 +55,6 @@ class CreateBillAdapter(
                 )
                 btnConfirm.isVisible = false
             }
-            Log.d(TAG, "=== $datas")
         }
     }
 
