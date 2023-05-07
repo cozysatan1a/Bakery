@@ -15,7 +15,7 @@ class EmployeeRecyclerAdapter(
     class MyViewHolder(val itemBinding: ItemUserInBranchBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(employee: User?, position: Int) {
-            itemBinding.tvNumber.text = position.toString()
+            itemBinding.tvNumber.text = (position+1).toString()
             itemBinding.tvCode.text = employee?.code
             itemBinding.tvName.text = employee?.name
             itemBinding.tvGender.text = employee?.gender

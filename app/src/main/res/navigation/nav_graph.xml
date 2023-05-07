@@ -34,6 +34,15 @@
         <action
             android:id="@+id/goToMenu"
             app:destination="@id/foodFragment" />
+        <action
+            android:id="@+id/fromHomeGoToBranchInfo"
+            app:destination="@id/branchInfoFragment" >
+            <argument
+                android:name="id"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
     </fragment>
 
     <fragment
@@ -325,6 +334,15 @@
                 app:argType="string"
                 app:nullable="true" />
         </action>
+        <action
+            android:id="@+id/goToBranchData"
+            app:destination="@id/branchDataFragment" >
+            <argument
+                android:name="id"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/createBranchFragment"
@@ -336,6 +354,17 @@
         android:name="com.example.bakery.ui.branch.edit_branch.EditBranchFragment"
         android:label="EditBranchFragment"
         tools:layout="@layout/fragment_edit_branch">
+        <argument
+            android:name="id"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/branchDataFragment"
+        android:name="com.example.bakery.ui.branch.branch_data.BranchDataFragment"
+        android:label="BranchDataFragment"
+        tools:layout="@layout/fragment_branch_data">
         <argument
             android:name="id"
             android:defaultValue="@null"

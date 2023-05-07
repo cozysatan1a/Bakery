@@ -6,4 +6,6 @@ interface BranchInfoListener {
     fun onEditBranch()
 
     fun onDeleteBranch()
+
+    fun onGoToBranchData()
 }

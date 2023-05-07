@@ -16,7 +16,7 @@ class CustomerAdapter(
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(customer: Customer?, position: Int) {
             itemBinding.tvName.text = customer?.name
-            itemBinding.tvCode.text = position.toString()
+            itemBinding.tvCode.text = (position+1).toString()
             itemBinding.tvAddress.text = customer?.address
             itemBinding.tvGender.text = customer?.gender
             itemBinding.tvPhone.text = customer?.phone

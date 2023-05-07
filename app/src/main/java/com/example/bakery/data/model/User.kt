@@ -8,5 +8,6 @@ data class User(
     var gender: String? = null,
     var name: String? = null,
     var admin: String? = null,
-    var branch: String? = null
+    var branch: String? = null,
+    var head: Boolean? = null
 )

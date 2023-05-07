@@ -37,7 +37,6 @@ class CreateBillAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        loadFoodList()
         val choices = foodList
         val adapter: ArrayAdapter<*> = ArrayAdapter(
             context,

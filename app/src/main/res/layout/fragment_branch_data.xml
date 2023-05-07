@@ -7,7 +7,7 @@
 
         <variable
             name="listener"
-            type="com.example.bakery.ui.branch.branch_info.BranchInfoListener" />
+            type="com.example.bakery.ui.branch.branch_data.BranchDataListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,80 +36,64 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chi nhánh"
+                android:text="Doanh thu"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14ssp" />
         </LinearLayout>
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/phone"
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:text="SDT:"
             android:textColor="@color/black"
             android:textSize="@dimen/_13ssp"
-            android:layout_marginStart="@dimen/_20sdp"
             app:layout_constraintStart_toStartOf="@id/ll_label"
             app:layout_constraintTop_toBottomOf="@id/ll_label" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_phone"
+        <TextView
+            android:id="@+id/income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_4sdp"
+            android:text="Tổng doanh thu tháng: "
             android:textColor="@color/black"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintBottom_toBottomOf="@id/phone"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/phone"
-            app:layout_constraintTop_toTopOf="@id/phone"
-            tools:text="0773346562" />
+            app:layout_constraintStart_toStartOf="@id/spinner"
+            app:layout_constraintTop_toBottomOf="@id/spinner" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/address"
+        <TextView
+            android:id="@+id/tv_income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Địa chỉ:"
+            android:layout_marginStart="@dimen/_10sdp"
             android:textColor="@color/black"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintStart_toStartOf="@id/phone"
-            app:layout_constraintTop_toBottomOf="@id/phone" />
+            app:layout_constraintBottom_toBottomOf="@id/income"
+            app:layout_constraintStart_toEndOf="@id/income"
+            app:layout_constraintTop_toTopOf="@id/income"
+            tools:text="20000000" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_4sdp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintBottom_toBottomOf="@id/address"
-            app:layout_constraintStart_toEndOf="@id/address"
-            app:layout_constraintTop_toTopOf="@id/address"
-            tools:text="0773346562" />
 
         <LinearLayout
             android:id="@+id/ll_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/address"
-            app:layout_constraintTop_toBottomOf="@id/address"
-            android:orientation="horizontal"
-            android:weightSum="100"
-            android:gravity="start"
-            android:paddingHorizontal="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_20sdp"
-            >
+            android:gravity="start"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:weightSum="100"
+            app:layout_constraintStart_toStartOf="@id/income"
+            app:layout_constraintTop_toBottomOf="@id/income">
+
             <TextView
                 android:id="@+id/tv_number"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="7"
+                android:layout_weight="10"
+                android:text="STT"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10ssp"
-                android:text="STT" />
+                android:textSize="@dimen/_10ssp" />
 
             <TextView
                 android:id="@+id/tv_name"
@@ -117,18 +101,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="30"
                 android:maxLines="2"
-                android:textColor="@color/black"
-                android:text="Tên" />
-
-            <TextView
-                android:id="@+id/tv_gender"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:maxLines="2"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_10ssp"
-                android:text="Giới tính" />
+                android:text="Tên món"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tv_code"
@@ -136,18 +110,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="20"
                 android:maxLines="2"
-                android:textColor="@color/black"
-                android:text="Mã nhân viên" />
-
-            <TextView
-                android:id="@+id/tv_email"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="30"
-                android:maxLines="2"
-                android:textColor="@color/black"
-                android:text="Email" />
-
+                android:text="Doanh số"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
@@ -158,9 +122,7 @@
             android:paddingHorizontal="@dimen/_20sdp"
             app:layout_constraintStart_toStartOf="@id/ll_header"
             app:layout_constraintTop_toBottomOf="@id/ll_header"
-            tools:listitem="@layout/item_user_in_branch" />
-
-
+            tools:listitem="@layout/item_income_data" />
 
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -169,6 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:paddingHorizontal="@dimen/_20sdp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_user_list">
 
@@ -177,7 +140,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_btn_stroke_black"
-                android:onClick="@{v-> listener.onEditBranch()}"
                 android:text="Thay đổi thông tin "
                 android:textColor="@color/black" />
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -188,6 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:paddingHorizontal="@dimen/_20sdp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ll_edit">
 
@@ -196,7 +159,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_btn_stroke_black"
-                android:onClick="@{v-> listener.onGoToBranchData()}"
                 android:text="Tra cứu dữ liệu doanh số"
                 android:textColor="@color/black" />
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -207,6 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:paddingHorizontal="@dimen/_20sdp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ll_data">
 
@@ -216,7 +179,6 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_btn_orange_radius_8"
                 android:gravity="center"
-                android:onClick="@{v-> listener.onDeleteBranch()}"
                 android:text="Xóa chi nhánh"
                 android:textColor="@color/black" />
         </androidx.appcompat.widget.LinearLayoutCompat>

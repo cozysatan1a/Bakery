@@ -1,13 +1,17 @@
 package com.example.bakery.ui.main
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.bakery.R
 import com.example.bakery.databinding.ActivityMainBinding
 import com.example.bakery.ui.base.BaseActivity
+import com.example.bakery.ui.home.HomeFragment
+import kotlin.system.exitProcess
 
 class MainActivity() : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
@@ -24,5 +28,17 @@ class MainActivity() : BaseActivity<ActivityMainBinding, MainViewModel>() {
         navController = navHostFragment.navController
         val bottomNavigationView = binding.mainBottomNav
         setupWithNavController(bottomNavigationView, navController)
+    }
+
+    override fun onBackPressed() {
+        when (supportFragmentManager.fragments.last()?.childFragmentManager?.fragments?.get(0)) {
+            is HomeFragment -> {
+                moveTaskToBack(true)
+                exitProcess(-1)
+            }
+            else -> {
+                super.onBackPressed()
+            }
+        }
     }
 }

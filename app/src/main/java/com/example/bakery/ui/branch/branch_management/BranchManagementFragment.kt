@@ -2,7 +2,7 @@ package com.example.bakery.ui.branch.branch_management
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,9 +29,39 @@ class BranchManagementFragment :
             rvBranchList.layoutManager = LinearLayoutManager(activity)
             viewModel.branches.observe(viewLifecycleOwner) {
                 it?.let {
-                    rvBranchList.adapter = BranchAdapter(it, BranchAdapter.OnClickListener { branch ->
-                        val action = BranchManagementFragmentDirections.goToBranchInfo().setId(branch?.id)
-                        findNavController().navigate(action)
+                    rvBranchList.adapter =
+                        BranchAdapter(it, BranchAdapter.OnClickListener { branch ->
+                            val action = BranchManagementFragmentDirections.goToBranchInfo()
+                                .setId(branch?.id)
+                            findNavController().navigate(action)
+                        })
+                    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+                        androidx.appcompat.widget.SearchView.OnQueryTextListener {
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            val list = it.filter {
+                                query?.let { query -> it.address?.lowercase()?.contains(query) } == true
+                            }
+                            binding.rvBranchList.adapter =
+                                BranchAdapter(
+                                    list.toMutableList(),
+                                    BranchAdapter.OnClickListener { branch ->
+                                        val action =
+                                            BranchManagementFragmentDirections.goToBranchInfo()
+                                                .setId(branch?.id)
+                                        findNavController().navigate(action)
+                                    })
+                            return false
+                        }
+
+                        override fun onQueryTextChange(newText: String?): Boolean {
+                            binding.rvBranchList.adapter =
+                                BranchAdapter(it, BranchAdapter.OnClickListener { branch ->
+                                    val action = BranchManagementFragmentDirections.goToBranchInfo()
+                                        .setId(branch?.id)
+                                    findNavController().navigate(action)
+                                })
+                            return false
+                        }
                     })
                 }
 

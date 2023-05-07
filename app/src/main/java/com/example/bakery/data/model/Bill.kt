@@ -6,7 +6,8 @@ data class Bill(
     var order: List<FoodOrder>? = null,
     var price: String? = null,
     var completed: Boolean? = null,
-    var completeTime: String? = null
+    var completeTime: String? = null,
+    var branch: String? = null
 )
 
 data class FoodOrder(

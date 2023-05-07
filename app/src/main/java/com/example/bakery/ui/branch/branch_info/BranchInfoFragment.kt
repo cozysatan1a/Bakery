@@ -38,6 +38,7 @@ class BranchInfoFragment : BaseFragment<FragmentBranchInfoBinding, BranchInfoVie
             }
             getAllUsersInCurrentBranch(args.id, {
                 binding.apply {
+                    llHeader.isVisible = (it.size > 0)
                     rvUserList.layoutManager = LinearLayoutManager(activity)
                     rvUserList.adapter =
                         EmployeeRecyclerAdapter(it, EmployeeRecyclerAdapter.OnClickListener {
@@ -65,5 +66,10 @@ class BranchInfoFragment : BaseFragment<FragmentBranchInfoBinding, BranchInfoVie
         viewModel.deleteBranch(args.id) {
             onBackPressed()
         }
+    }
+
+    override fun onGoToBranchData() {
+        val action = BranchInfoFragmentDirections.goToBranchData().setId(args.id)
+        findNavController().navigate(action)
     }
 }

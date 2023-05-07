@@ -1,16 +1,11 @@
 package com.example.bakery.ui.home
 
-import android.content.ContentValues.TAG
-import android.util.Log
-import androidx.lifecycle.MethodCallsLogger
 import androidx.lifecycle.MutableLiveData
 import com.example.bakery.data.model.User
 import com.example.bakery.ui.base.BaseViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
 
 @HiltViewModel
 class HomeViewModel : BaseViewModel() {
