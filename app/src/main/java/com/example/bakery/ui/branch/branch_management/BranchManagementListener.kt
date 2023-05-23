@@ -4,4 +4,6 @@ interface BranchManagementListener {
     fun onBackPressed()
 
     fun onCreateNewBranch()
+
+    fun onViewChainData()
 }

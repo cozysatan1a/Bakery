@@ -8,4 +8,6 @@ interface BranchInfoListener {
     fun onDeleteBranch()
 
     fun onGoToBranchData()
+
+    fun onGoToFeedback()
 }

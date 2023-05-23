@@ -78,4 +78,8 @@ class BranchManagementFragment :
     override fun onCreateNewBranch() {
         findNavController().navigate(R.id.goToCreateBranch)
     }
+
+    override fun onViewChainData() {
+        findNavController().navigate(R.id.goToChainData)
+    }
 }

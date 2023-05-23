@@ -72,4 +72,9 @@ class BranchInfoFragment : BaseFragment<FragmentBranchInfoBinding, BranchInfoVie
         val action = BranchInfoFragmentDirections.goToBranchData().setId(args.id)
         findNavController().navigate(action)
     }
+
+    override fun onGoToFeedback() {
+        val action = BranchInfoFragmentDirections.goToFeedBack().setUid(args.id)
+        findNavController().navigate(action)
+    }
 }

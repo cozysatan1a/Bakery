@@ -36,7 +36,7 @@
             app:destination="@id/foodFragment" />
         <action
             android:id="@+id/fromHomeGoToBranchInfo"
-            app:destination="@id/branchInfoFragment" >
+            app:destination="@id/branchInfoFragment">
             <argument
                 android:name="id"
                 android:defaultValue="@null"
@@ -103,6 +103,9 @@
         <action
             android:id="@+id/goToCreateBranch"
             app:destination="@id/createBranchFragment" />
+        <action
+            android:id="@+id/goToChainData"
+            app:destination="@id/chainDataFragment" />
     </fragment>
 
     <fragment
@@ -336,9 +339,18 @@
         </action>
         <action
             android:id="@+id/goToBranchData"
-            app:destination="@id/branchDataFragment" >
+            app:destination="@id/branchDataFragment">
             <argument
                 android:name="id"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+        <action
+            android:id="@+id/goToFeedBack"
+            app:destination="@id/branchFeedbackFragment" >
+            <argument
+                android:name="uid"
                 android:defaultValue="@null"
                 app:argType="string"
                 app:nullable="true" />
@@ -367,6 +379,23 @@
         tools:layout="@layout/fragment_branch_data">
         <argument
             android:name="id"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/chainDataFragment"
+        android:name="com.example.bakery.ui.branch.chain_data.ChainDataFragment"
+        android:label="ChainDataFragment"
+        tools:layout="@layout/fragment_chain_data" />
+
+    <fragment
+        android:id="@+id/branchFeedbackFragment"
+        android:name="com.example.bakery.ui.branch.branch_feedback.BranchFeedbackFragment"
+        android:label="BranchFeedbackFragment"
+        tools:layout="@layout/fragment_branch_feedback">
+        <argument
+            android:name="uid"
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />

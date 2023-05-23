@@ -1,7 +1,5 @@
 package com.example.bakery.ui.branch.branch_data
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import com.example.bakery.data.model.Customer
 import com.example.bakery.ui.base.BaseViewModel
 import com.google.firebase.firestore.FirebaseFirestore

@@ -48,6 +48,17 @@
             android:background="@drawable/bg_btn_stroke_black"
             app:backgroundTint="@null"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/bg_btn_stroke_black"
+            android:onClick="@{v -> listener.onViewChainData()}"
+            android:text="Doanh thu toàn chuỗi"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:backgroundTint="@null" />
+
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
