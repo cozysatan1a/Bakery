@@ -49,6 +49,19 @@
             android:background="@drawable/bg_btn_stroke_black"
             app:backgroundTint="@null"/>
 
+        <Button
+            android:id="@+id/btn_feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feedback của khách hàng"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:onClick="@{v -> listener.onAddFeedback()}"
+            android:background="@drawable/bg_btn_orange_radius_8"
+            app:backgroundTint="@null"/>
+
         <SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
