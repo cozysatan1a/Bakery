@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bakery.databinding.ItemIncomeDataBinding
 
 class BranchDataAdapter(
-    private val dataList: MutableList<FoodRevenue>,) :
+    private val dataList: MutableList<FoodRevenueByMonth>,) :
     RecyclerView.Adapter<BranchDataAdapter.MyViewHolder>() {
 
     class MyViewHolder(val itemBinding: ItemIncomeDataBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(revenue: FoodRevenue, position: Int) {
+        fun bind(revenue: FoodRevenueByMonth, position: Int) {
             itemBinding.tvNumber.text = (position + 1).toString()
             itemBinding.tvName.text = revenue.foodName
             itemBinding.tvCode.text = revenue.revenue.toString()
@@ -29,7 +29,7 @@ class BranchDataAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val revenue: FoodRevenue = dataList[position]
+        val revenue: FoodRevenueByMonth = dataList[position]
         holder.bind(revenue, position)
     }
 }

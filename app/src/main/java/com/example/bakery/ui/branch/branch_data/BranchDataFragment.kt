@@ -2,6 +2,7 @@ package com.example.bakery.ui.branch.branch_data
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -37,9 +38,25 @@ class BranchDataFragment : BaseFragment<FragmentBranchDataBinding, BranchDataVie
                     spinner.isVisible = (monthList.size > 0)
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     spinner.adapter = adapter
+                    spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                            parent: AdapterView<*>?,
+                            view: View?,
+                            position: Int,
+                            id: Long
+                        ) {
+                            val selectedMonthYear = monthList[position]
+                            val foodRevenueForSelectedMonth = billList.filter { revenue -> revenue.monthYear == selectedMonthYear }
+                            rvUserList.layoutManager = LinearLayoutManager(activity)
+                            rvUserList.adapter = BranchDataAdapter(foodRevenueForSelectedMonth.toMutableList())
+                        }
+
+                        override fun onNothingSelected(parent: AdapterView<*>?) {
+                        }
+
+                    }
                     tvIncome.text = totalIncome.toString()
-                    rvUserList.layoutManager = LinearLayoutManager(activity)
-                    rvUserList.adapter = BranchDataAdapter(billList)
+
                 }
             }
         }

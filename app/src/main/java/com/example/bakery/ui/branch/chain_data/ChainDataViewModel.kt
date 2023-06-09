@@ -2,14 +2,14 @@ package com.example.bakery.ui.branch.chain_data
 
 import com.example.bakery.data.model.Customer
 import com.example.bakery.ui.base.BaseViewModel
-import com.example.bakery.ui.branch.branch_data.FoodRevenue
+import com.example.bakery.ui.branch.branch_data.FoodRevenueByMonth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @HiltViewModel
 class ChainDataViewModel : BaseViewModel() {
     val db = FirebaseFirestore.getInstance()
-    fun getData(callback: (MutableList<String>, Int, MutableList<FoodRevenue>) -> Unit) {
+    fun getData(callback: (MutableList<String>, Int, MutableList<FoodRevenueByMonth>) -> Unit) {
         val branchIds = mutableListOf<String>()
         db.collection("Branches")
             .get()
@@ -22,11 +22,12 @@ class ChainDataViewModel : BaseViewModel() {
                     .get()
                     .addOnSuccessListener { documents ->
                         val timeList = mutableListOf<String>()
-                        val foodRevenueList = mutableListOf<FoodRevenue>()
+                        val foodRevenueList = mutableListOf<FoodRevenueByMonth>()
                         var totalIncome = 0
                         for (document in documents) {
                             val customer = document.toObject(Customer::class.java)
-                            val bills = customer.bill?.filter { it?.branch in branchIds && it?.completed == true }
+                            val bills =
+                                customer.bill?.filter { it?.branch in branchIds && it?.completed == true }
                             bills?.forEach { bill ->
                                 val completeTime = bill?.completeTime
                                 val monthYear = completeTime?.substring(0, 7)
@@ -37,20 +38,29 @@ class ChainDataViewModel : BaseViewModel() {
                                 bill.order?.forEach { foodOrder ->
                                     val foodName = foodOrder?.food?.name
                                     val quantity = foodOrder?.quantity ?: 0
-                                    if (foodName != null) {
-                                        val foodRevenue = foodRevenueList.find { it.foodName == foodName }
+                                    if (foodName != null && monthYear != null) {
+                                        val foodRevenue =
+                                            foodRevenueList.find { it.foodName == foodName && it.monthYear == monthYear }
                                         if (foodRevenue != null) {
                                             foodRevenue.revenue += quantity
                                         } else {
-                                            foodRevenueList.add(FoodRevenue(foodName, quantity))
+                                            foodRevenueList.add(
+                                                FoodRevenueByMonth(
+                                                    foodName,
+                                                    monthYear,
+                                                    quantity
+                                                )
+                                            )
                                         }
                                     }
                                 }
+
                             }
                         }
                         callback.invoke(timeList, totalIncome, foodRevenueList)
+
                     }
             }
-    }
 
+    }
 }

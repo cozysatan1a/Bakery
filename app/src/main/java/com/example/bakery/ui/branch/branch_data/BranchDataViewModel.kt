@@ -9,14 +9,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 class BranchDataViewModel : BaseViewModel() {
     fun getData(
         branchId: String,
-        callback: (MutableList<String>, Int, MutableList<FoodRevenue>) -> Unit
+        callback: (MutableList<String>, Int, MutableList<FoodRevenueByMonth>) -> Unit
     ) {
         val db = FirebaseFirestore.getInstance()
         db.collection("Customers")
             .get()
             .addOnSuccessListener { documents ->
                 val timeList = mutableListOf<String>()
-                val foodRevenueList = mutableListOf<FoodRevenue>()
+                val foodRevenueList = mutableListOf<FoodRevenueByMonth>()
                 var totalIncome = 0
                 for (document in documents) {
                     val customer = document.toObject(Customer::class.java)
@@ -32,12 +32,12 @@ class BranchDataViewModel : BaseViewModel() {
                         bill.order?.forEach { foodOrder ->
                             val foodName = foodOrder?.food?.name
                             val quantity = foodOrder?.quantity ?: 0
-                            if (foodName != null) {
-                                val foodRevenue = foodRevenueList.find { it.foodName == foodName }
+                            if (foodName != null && monthYear != null) {
+                                val foodRevenue = foodRevenueList.find { it.foodName == foodName && it.monthYear == monthYear }
                                 if (foodRevenue != null) {
                                     foodRevenue.revenue += quantity
                                 } else {
-                                    foodRevenueList.add(FoodRevenue(foodName, quantity))
+                                    foodRevenueList.add(FoodRevenueByMonth(foodName, monthYear, quantity))
                                 }
                             }
                         }
@@ -50,4 +50,4 @@ class BranchDataViewModel : BaseViewModel() {
     }
 }
 
-data class FoodRevenue(val foodName: String, var revenue: Int)
+data class FoodRevenueByMonth(val foodName: String, val monthYear: String, var revenue: Int)
