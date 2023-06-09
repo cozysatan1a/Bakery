@@ -14,7 +14,6 @@ class BranchFeedbackAdapter(
     class MyViewHolder(val itemBinding: ItemFeedbackBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(feedback: Feedback, position: Int) {
-            itemBinding.tvNumber.text = (position + 1).toString()
             itemBinding.tvName.text = feedback.customer
             itemBinding.tvFeedback.text = feedback.feedback
         }

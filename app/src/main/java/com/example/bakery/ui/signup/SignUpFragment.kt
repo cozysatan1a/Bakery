@@ -76,6 +76,7 @@ class SignUpFragment : BaseFragment<FragmentSignupBinding, SignUpViewModel>(), S
                     val branchId = (binding.spinnerFood.selectedItem as Branch).id?.let {
                         it
                     }
+                    val isBranchMaster = binding.rbBranchMaster.isChecked
                     userInfo["name"] = binding.edtName.text.toString()
                     userInfo["gender"] = selectedGender.text.toString()
                     userInfo["email"] = binding.edtEmail.text.toString()
@@ -85,6 +86,7 @@ class SignUpFragment : BaseFragment<FragmentSignupBinding, SignUpViewModel>(), S
                         if (binding.rgRole.checkedRadioButtonId == binding.rbAdmin.id) "1" else "0"
                     userInfo["uid"] = user?.uid.toString()
                     userInfo["branch"] = branchId!!
+                    userInfo["head"] = isBranchMaster
                     documentReference?.set(userInfo)
                     Snackbar.make(
                         binding.btnLogin,
@@ -92,6 +94,7 @@ class SignUpFragment : BaseFragment<FragmentSignupBinding, SignUpViewModel>(), S
                         Snackbar.LENGTH_SHORT
                     ).show()
                     signUpFirebaseAuth.signOut()
+                    onBackPressed()
                 }
                 .addOnFailureListener {
                     signUpApp.delete()

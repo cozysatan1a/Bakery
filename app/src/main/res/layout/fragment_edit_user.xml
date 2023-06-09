@@ -64,7 +64,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_20sdp"
-                android:checkedButton="@id/rb_male"
                 android:orientation="horizontal">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
@@ -124,6 +123,41 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:layout_weight="70" />
+
+            <RadioGroup
+                android:id="@+id/rg_role"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_admin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Quản trị viên" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Nhân viên" />
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/rg_branch_master"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkedButton="@id/rb_male"
+                android:orientation="horizontal">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_branch_master"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Trưởng chi nhánh" />
+
+            </RadioGroup>
 
 
             <androidx.appcompat.widget.AppCompatButton

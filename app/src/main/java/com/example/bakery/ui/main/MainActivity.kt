@@ -33,8 +33,7 @@ class MainActivity() : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun onBackPressed() {
         when (supportFragmentManager.fragments.last()?.childFragmentManager?.fragments?.get(0)) {
             is HomeFragment -> {
-                moveTaskToBack(true)
-                exitProcess(-1)
+                finishAffinity()
             }
             else -> {
                 super.onBackPressed()

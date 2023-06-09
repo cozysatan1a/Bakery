@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,21 +9,27 @@
             type="com.example.bakery.ui.login.LoginListener" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
         android:paddingHorizontal="@dimen/_20sdp">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="234dp"
+            android:layout_height="204dp"
+
+            android:src="@drawable/img_logo" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bakery"
+            android:text="Quản lý chuỗi tiệm bánh ngọt"
             android:textColor="@color/black"
             android:textStyle="italic|bold"
-            android:textSize="@dimen/_36ssp"
+            android:textSize="@dimen/_16ssp"
             android:layout_marginBottom="@dimen/_20sdp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -49,6 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mật khẩu"
+            app:passwordToggleEnabled="true"
             android:layout_marginBottom="@dimen/_20sdp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -58,7 +66,8 @@
                 android:inputType="textPassword"
                 android:maxLength="64"
                 android:maxLines="1"
-                android:paddingVertical="@dimen/_8sdp" />
+                android:paddingVertical="@dimen/_8sdp"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -73,6 +82,15 @@
             android:paddingHorizontal="@dimen/_14sdp"
             android:onClick="@{v -> listener.onClickLogin()}"
             android:layout_marginBottom="@dimen/_20sdp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_forget_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quên mật khẩu?"
+            android:onClick="@{v -> listener.onClickForgotPassword()}"
+            android:textColor="@color/orange"
+            />
 
     </LinearLayout>
 </layout>

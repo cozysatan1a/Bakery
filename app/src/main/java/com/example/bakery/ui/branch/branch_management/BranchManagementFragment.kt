@@ -40,7 +40,7 @@ class BranchManagementFragment :
                         override fun onQueryTextSubmit(query: String?): Boolean {
                             val list = it.filter {
                                 query?.let { query ->
-                                    it.address?.lowercase()?.contains(query)
+                                    it.address?.lowercase()?.contains(query.lowercase())
                                 } == true
                             }
                             binding.rvBranchList.adapter =

@@ -37,8 +37,8 @@ class CustomerManagementFragment :
                 searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
                     androidx.appcompat.widget.SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
-                        val list = it.filter {
-                            query?.let { query -> it?.name?.lowercase()?.contains(query) } == true
+                        val list = it.filter { customer ->
+                            query?.let { query -> customer?.name?.lowercase()?.contains(query.lowercase()) } == true
                         }
                         binding.rvCustomerList.adapter =
                             CustomerAdapter(list, CustomerAdapter.OnClickListener { customer ->

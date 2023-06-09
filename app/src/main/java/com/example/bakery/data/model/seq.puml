@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Actor QuanTriVien as nv
+Boundary BranchManagementFragment as fragment
+Control BranchManagementViewModel as viewModel
+Database Firebase as firebase
+
+nv -> fragment : Chon chi nhanh can xoa
+fragment -> viewModel: Bam button Xoa chi nhanh
+viewModel -> firebase: Gui request xoa du lieu len Firebase
+firebase -> viewModel: Firebase tra ve phan hoi
+alt thanh cong
+    viewModel -> fragment: Xoa thong tin thanh cong
+    fragment -> nv: Hien thong bao thanh cong
+else that bai
+    viewModel -> fragment: Xoa thong tin that bai
+       fragment -> nv: Hien thong bao that bai
+end
+@enduml

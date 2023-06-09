@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_underline_gray"
         android:paddingVertical="@dimen/_4sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
         android:weightSum="100"
         >
 

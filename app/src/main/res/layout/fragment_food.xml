@@ -47,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="@drawable/bg_under_line_orange"
                 android:weightSum="100">
                 <TextView
                     android:id="@+id/tv_name"

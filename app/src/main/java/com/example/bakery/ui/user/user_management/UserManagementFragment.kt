@@ -47,7 +47,7 @@ class UserManagementFragment :
                                 })
                         } else {
                             val list = it.filter {
-                                query?.let { query -> it?.name?.lowercase()?.contains(query) } == true
+                                query?.let { query -> it?.name?.lowercase()?.contains(query.lowercase()) } == true
                             }
                             binding.rvUserList.adapter = UserRecyclerAdapter<Any?>(
                                 list,

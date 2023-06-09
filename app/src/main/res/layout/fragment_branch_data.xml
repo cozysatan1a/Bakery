@@ -82,6 +82,8 @@
             android:gravity="start"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/_20sdp"
+            android:background="@drawable/bg_under_line_orange"
+            android:paddingVertical="@dimen/_5sdp"
             android:weightSum="100"
             app:layout_constraintStart_toStartOf="@id/income"
             app:layout_constraintTop_toBottomOf="@id/income">
@@ -92,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
                 android:text="STT"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_10ssp" />
 
             <TextView
@@ -102,7 +104,8 @@
                 android:layout_weight="30"
                 android:maxLines="2"
                 android:text="Tên món"
-                android:textColor="@color/black" />
+                android:textColor="@color/white"
+                />
 
             <TextView
                 android:id="@+id/tv_code"
@@ -111,7 +114,8 @@
                 android:layout_weight="20"
                 android:maxLines="2"
                 android:text="Doanh số"
-                android:textColor="@color/black" />
+                android:textColor="@color/white"
+                />
 
         </LinearLayout>
 

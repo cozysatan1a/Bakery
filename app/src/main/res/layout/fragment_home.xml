@@ -19,7 +19,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/zircon"
+        android:background="@color/light_blue"
         android:padding="@dimen/_8sdp">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -81,13 +81,15 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_customer" />
+                android:src="@drawable/ic_customer"
+                app:tint="@color/orange"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quản lý khách hàng"
                 android:textColor="@color/black"
+                android:fontFamily="@font/noto_sans_regular"
                 android:textStyle="bold"
                 android:textSize="@dimen/_15ssp"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -111,12 +113,14 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_storage" />
+                android:src="@drawable/ic_storage"
+                app:tint="@color/orange"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quản lý chi nhánh"
+                android:fontFamily="@font/noto_sans_regular"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="@dimen/_15ssp"/>
@@ -167,12 +171,14 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_menu" />
+                android:src="@drawable/ic_menu"
+                app:tint="@color/orange"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quản lý menu "
+                android:fontFamily="@font/noto_sans_regular"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="@dimen/_15ssp"/>
@@ -196,12 +202,14 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:tint="@color/orange"
                 android:src="@drawable/ic_user" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quản lý nhân viên "
+                android:fontFamily="@font/noto_sans_regular"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="@dimen/_15ssp"/>

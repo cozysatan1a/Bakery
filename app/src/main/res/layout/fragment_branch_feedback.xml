@@ -42,57 +42,15 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/ll_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/ll_label"
-            app:layout_constraintTop_toBottomOf="@id/ll_label"
-            android:orientation="horizontal"
-            android:weightSum="100"
-            android:gravity="start"
-            android:paddingHorizontal="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            >
-            <TextView
-                android:id="@+id/tv_number"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_10ssp"
-                android:text="STT" />
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="35"
-                android:maxLines="2"
-                android:textColor="@color/black"
-                android:text="Tên khách hàng" />
-
-
-            <TextView
-                android:id="@+id/tv_email"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="60"
-                android:maxLines="2"
-                android:textColor="@color/black"
-                android:text="Feedback" />
-
-
-        </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_user_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.5"
+            android:layout_marginTop="@dimen/_10sdp"
             android:paddingHorizontal="@dimen/_20sdp"
-            app:layout_constraintStart_toStartOf="@id/ll_header"
-            app:layout_constraintTop_toBottomOf="@id/ll_header"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintStart_toStartOf="@id/ll_label"
+            app:layout_constraintTop_toBottomOf="@id/ll_label"
             tools:listitem="@layout/item_feedback" />
 
         <androidx.appcompat.widget.LinearLayoutCompat

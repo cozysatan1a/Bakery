@@ -96,6 +96,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/address"
             app:layout_constraintTop_toBottomOf="@id/address"
+            android:background="@drawable/bg_under_line_orange"
             android:orientation="horizontal"
             android:weightSum="100"
             android:gravity="start"
@@ -107,7 +108,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="7"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_10ssp"
                 android:text="STT" />
 
@@ -117,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="30"
                 android:maxLines="2"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="Tên" />
 
             <TextView
@@ -126,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
                 android:maxLines="2"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_10ssp"
                 android:text="Giới tính" />
 
@@ -136,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="20"
                 android:maxLines="2"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="Mã nhân viên" />
 
             <TextView
@@ -145,9 +146,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="30"
                 android:maxLines="2"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="Email" />
-
 
         </LinearLayout>
 
@@ -157,6 +157,7 @@
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.35"
             android:paddingHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="@id/ll_header"
             app:layout_constraintTop_toBottomOf="@id/ll_header"
             tools:listitem="@layout/item_user_in_branch" />
@@ -235,7 +236,7 @@
                 android:gravity="center"
                 android:onClick="@{v-> listener.onDeleteBranch()}"
                 android:text="Xóa chi nhánh"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 

@@ -27,6 +27,23 @@ class EditUserFragment : BaseFragment<FragmentEditUserBinding, EditUserViewModel
         super.onViewCreated(view, savedInstanceState)
         binding.listener = this@EditUserFragment
         viewModel.apply {
+            getCurrentUserFirebase(args.uid) {
+                if (it?.admin == "1") {
+                    binding.rbAdmin.isChecked = true
+                } else binding.rbUser.isChecked = true
+                if (it?.head == true) {
+                    binding.rbBranchMaster.isChecked = true
+                }
+                if (it?.gender == "Nam") {
+                    binding.rbMale.isChecked = true
+                } else binding.rbFemale.isChecked = true
+                getUserBranch(it?.branch) {userBranch ->
+                    getAllBranches {branches ->
+                        val index = branches.indexOf(userBranch)
+                        binding.spinnerBranch.setSelection(index+1)
+                    }
+                }
+            }
             getAllBranches {
                 it.add(0, Branch(address = "Chi nhánh", id= "0"))
                 val adapter: ArrayAdapter<*> = ArrayAdapter(
@@ -49,13 +66,17 @@ class EditUserFragment : BaseFragment<FragmentEditUserBinding, EditUserViewModel
             val selectedGender: RadioButton =
                 binding.root.findViewById(binding.rgGender.checkedRadioButtonId)
             val selectedBranch = (binding.spinnerBranch.selectedItem as Branch).id!!
+            val isAdmin = if (binding.rbAdmin.isChecked) "1" else "0"
+            val isBranchMaster = binding.rbBranchMaster.isChecked
             viewModel.updateCurrentUser(
                 args.uid,
                 code = edtCode.text.toString(),
                 dob = edtDob.text.toString(),
                 gender = selectedGender.text.toString(),
                 name = edtName.text.toString(),
-                branch = selectedBranch
+                branch = selectedBranch,
+                isAdmin = isAdmin,
+                isBranchMaster = isBranchMaster
             )
             onBackPressed()
         }

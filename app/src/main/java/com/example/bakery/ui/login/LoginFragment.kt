@@ -1,7 +1,9 @@
 package com.example.bakery.ui.login
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bakery.R
@@ -41,6 +43,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), Logi
             }
         }
 
+    }
+
+    override fun onClickForgotPassword() {
+        if (binding.edtEmail.text.isNullOrBlank()) {
+            Toast.makeText(requireContext(), "Nhập email sau đó bấm Quên mật khẩu", Toast.LENGTH_SHORT).show()
+        } else {
+            fAuth.sendPasswordResetEmail(binding.edtEmail.text.toString()).addOnSuccessListener {
+                Toast.makeText(requireContext(), "Đã gửi email reset mật khẩu đến ${binding.edtEmail.text.toString()}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun validateFields(callback: () -> Unit) {

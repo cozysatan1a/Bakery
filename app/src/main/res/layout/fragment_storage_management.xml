@@ -40,12 +40,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Thêm chi nhánh"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textAllCaps="false"
             android:layout_marginVertical="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:onClick="@{v -> listener.onCreateNewBranch()}"
-            android:background="@drawable/bg_btn_stroke_black"
+            android:background="@drawable/bg_btn_orange_radius_8"
             app:backgroundTint="@null"/>
 
         <Button
@@ -68,7 +68,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="100"
-            android:background="@drawable/bg_underline_gray"
+            android:background="@drawable/bg_under_line_orange"
+            android:paddingVertical="@dimen/_5sdp"
             android:paddingHorizontal="@dimen/_10sdp">
             <TextView
                 android:id="@+id/tv_code"
@@ -78,7 +79,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:scrollHorizontally="true"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="STT" />
 
             <TextView
@@ -89,7 +90,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:scrollHorizontally="true"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="Địa chỉ" />
 
             <TextView
@@ -100,7 +101,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:scrollHorizontally="true"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="SDT" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

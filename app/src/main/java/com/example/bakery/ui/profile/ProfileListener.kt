@@ -6,4 +6,6 @@ interface ProfileListener {
     fun onClickEditInfo()
 
     fun onClickLogOut()
+
+    fun onChangePassword()
 }
