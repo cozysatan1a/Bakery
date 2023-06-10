@@ -37,10 +37,12 @@
                 android:textSize="@dimen/_14ssp"/>
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Thêm khách hàng"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@color/black"
             android:textColor="@color/black"
             android:textAllCaps="false"
             android:layout_marginTop="@dimen/_20sdp"
@@ -49,11 +51,12 @@
             android:background="@drawable/bg_btn_stroke_black"
             app:backgroundTint="@null"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_feedback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Feedback của khách hàng"
+            app:icon="@drawable/ic_feedback"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:layout_marginTop="@dimen/_20sdp"

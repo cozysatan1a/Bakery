@@ -10,7 +10,10 @@ import com.example.bakery.R
 import com.example.bakery.databinding.FragmentLoginBinding
 import com.example.bakery.ui.base.BaseFragment
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,8 +41,17 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(), Logi
                     .show()
                 findNavController().navigate(R.id.loginToMain)
             }.addOnFailureListener {
-                Snackbar.make(binding.btnLogin, "Đăng nhập thất bại.\nMã lỗi: $it", Snackbar.LENGTH_SHORT)
-                    .show()
+                when (it) {
+                    is FirebaseNetworkException -> Snackbar.make(binding.btnLogin, "Vui lòng kiểm tra kết nối mạng", Snackbar.LENGTH_SHORT)
+                        .show()
+                    is FirebaseAuthInvalidCredentialsException -> Snackbar.make(binding.btnLogin, "Email/Mật khẩu sai", Snackbar.LENGTH_SHORT)
+                        .show()
+                    is FirebaseAuthInvalidUserException -> Snackbar.make(binding.btnLogin, "Tài khoản không hợp lệ", Snackbar.LENGTH_SHORT)
+                        .show()
+                    else -> Snackbar.make(binding.btnLogin, "Đăng nhập lỗi. \n Mã lỗi: $it", Snackbar.LENGTH_SHORT)
+                        .show()
+                }
+
             }
         }
 

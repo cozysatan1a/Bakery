@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentReference
@@ -98,11 +99,17 @@ class SignUpFragment : BaseFragment<FragmentSignupBinding, SignUpViewModel>(), S
                 }
                 .addOnFailureListener {
                     signUpApp.delete()
-                    Snackbar.make(
-                        binding.btnLogin,
-                        "Tạo tài khoản thất bại. Lỗi: $it",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    when (it) {
+                        is FirebaseAuthWeakPasswordException -> "Mật khẩu không đủ mạnh"
+                        else -> {
+                            Snackbar.make(
+                                binding.btnLogin,
+                                "Tạo tài khoản thất bại. Lỗi: $it",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+
                 }
 
         }

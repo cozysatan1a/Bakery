@@ -36,10 +36,12 @@
                 android:textSize="@dimen/_14ssp"/>
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Thêm chi nhánh"
+            app:icon="@drawable/ic_add"
+
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:layout_marginVertical="@dimen/_20sdp"
@@ -48,13 +50,15 @@
             android:background="@drawable/bg_btn_orange_radius_8"
             app:backgroundTint="@null"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:background="@drawable/bg_btn_stroke_black"
             android:onClick="@{v -> listener.onViewChainData()}"
             android:text="Doanh thu toàn chuỗi"
+            app:icon="@drawable/ic_data"
+            app:iconTint="@color/black"
             android:textAllCaps="false"
             android:textColor="@color/black"
             app:backgroundTint="@null" />
